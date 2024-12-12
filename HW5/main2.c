@@ -2,18 +2,27 @@
 
 int main()
 {
-    double pi = 0.0;
-    int count = 1;
+    double pi = 4.0;
+    int flag = 1;
+    long ipi = 0;
+    int x = 0;
 
-    for (int i = 1; i < 300000; i += 2) { // 分母為奇數遞增
-        if (count % 2 == 0) {
-            pi -= 4.0 / i;  // 確保浮點數除法
-        } else {
-            pi += 4.0 / i;
+    for (int i = 3; i < 1000000; i += 2) { // 分母為奇數遞增
+        if (flag == 0) {
+            pi += (4.0 / i);
+            flag++; // 確保浮點數除法
         }
-        count += 1;
+        else {
+            pi -= (4.0 / i);
+            flag--;
+        }
+        ipi = pi * 100000;
+        if (ipi == 314159) {
+            x = i;
+            break;
+        }
     }
 
-    printf("Pi approximation: %.5f\n", pi);
+    printf("%d %.5f",x , pi);
     return 0;
 }
